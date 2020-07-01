@@ -6,7 +6,10 @@ import { VideoDetail , Searchbar } from './components';
 
 class App extends React.Component{
 
-
+      state={
+        videos:[],
+        selectedVideo: null,
+      }
    
 
     handleSubmit = async (searchTerm) => {
@@ -18,12 +21,13 @@ class App extends React.Component{
             q: searchTerm,
         }
         });
-
-       console.log(response.data.items);
+          this.setState({videos: response.data.items , selectedVideo: response.data.items[0]})
     }
 
     render(){
       
+        const { selectedVideo } = this.state; 
+
         return(
           <Grid justify="center" container spacing={10}>
               <Grid item xs={12}>
@@ -32,7 +36,7 @@ class App extends React.Component{
                         <Searchbar onFormSubmit={this.handleSubmit} />
                       </Grid>
                     <Grid item xs={8}>
-                        <VideoDetail />
+                        <VideoDetail video={selectedVideo}/>
                     </Grid>
                     <Grid item xs={4}>
                         {/*video list */}
