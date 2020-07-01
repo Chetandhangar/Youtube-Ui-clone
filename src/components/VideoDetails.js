@@ -1,7 +1,10 @@
 import React from "react";
+import {Paper , Typography } from '@material-ui/core'
 
 const VideoDetail = () => {
-     return <h1>This is a video Detail</h1>
+    return(
+          <div>This is Video Detail</div>
+    );
 }
 
 export default VideoDetail;
